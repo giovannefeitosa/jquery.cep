@@ -1,5 +1,5 @@
 /**
- * jQuery CEP plugin v0.2
+ * jQuery CEP plugin v0.1
  * https://github.com/giovanneafonso/jquery.cep
  */
 
@@ -13,50 +13,21 @@
     /**
      * PLugin instance
      */
-    $.fn.cep = function(options) {
-        
-        /**
-         * Default Settings
-         */
-        var settings = {
-            autofill:       true,
-            autofill_attr:  'data-cep',
-            done:           function(responseCEP) {}
-        };
-        
-        if(typeof options === 'object') {
-            // Extend Options
-            settings = $.extend(settings, options);
-        } else if(typeof options === 'function') {
-            // Only "done" Callback
-            settings.done = options;
-        }
-        
+    $.fn.cep = function(callback) {
         this.each(function()
         {
             var cepElement = $(this);
             
-            // Track any changes
             cepElement.on('keyup change', function() {
-                // var cep = Only CEP Numbers
                 var cep = CEPNumbers(cepElement.val());
-                
-                // Update field value with formatted CEP
                 cepElement.val(maskedCEP(cep));
                 
                 // When CEP is fully typed
                 // Send request and retrieve data
                 if(cep.length === 8) {
                     cepElement.attr('disabled', true);
-                    
                     $.get(ws_url+cep, function(responseCEP) {
-                        // Autofill
-                        if(settings.autofill) {
-                            autoFill(responseCEP, settings.autofill_attr);
-                        }
-                        
-                        // Execute Callback
-                        settings.done(responseCEP);
+                        callback(responseCEP);
                     }).always(function() {
                         cepElement.attr('disabled', false);
                     });
@@ -95,20 +66,5 @@
             formattedCEP = _CN;
         }
         return formattedCEP;
-    }
-    
-    /**
-     * AutoFill inputs when a CEP is fetched
-     */
-    function autoFill(responseCEP, attr)
-    {
-        $('['+attr+']').each(function() {
-            var self  = $(this);
-            var field = self.attr(attr);
-            
-            if(responseCEP[field]) {
-                self.val(responseCEP[field]);
-            }
-        });
     }
 })(jQuery);
