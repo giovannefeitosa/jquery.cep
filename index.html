@@ -38,9 +38,14 @@
         border:1px solid #ddd;
         border-top:0;
     }
+    .doc-block {
+        margin-bottom: 30px;
+    }
     .doc-block h3 {
-        border-bottom:1px solid #eee;
+        margin:0;
+        margin-bottom:15px;
         padding-bottom:5px;
+        border-bottom:1px solid #eee;
     }
     .doc-block p {
         padding-left:15px;
@@ -58,6 +63,19 @@
         background:#777;
         text-decoration:none;
     }
+    .demo-options-table {
+        margin-top:15px;
+    }
+    .demo-options-table thead th {
+        padding:30px !important;
+        background:#fff;
+        color:#69b;
+        font-size:18px;
+        text-align:center;
+    }
+    .demo-options-table tbody th {
+        text-align:right;
+    }
     </style>
 </head>
 <body>
@@ -67,7 +85,7 @@
             <a href="https://github.com/giovanneafonso/jquery.cep" class="pull-right" target="_blank">
                 View on Github
             </a>
-            jQuery CEP Plugin
+            Versão Atual: 0.2
         </div>
     </div>
     
@@ -205,10 +223,62 @@
                     </div><!-- /#demo-docs -->
                     
                     <div class="tab-pane" id="demo-options">
-                        <h4>FALTA FAZER...</h4>
-                    </div>
+                        Você pode personalizar o uso do plugin utilizando as opções disponíveis listadas abaixo.
+                        
+                        <table class="table table-striped table-bordered demo-options-table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Opções do Plugin</th>
+                            <tbody>
+                                <tr>
+                                    <th> <code>function</code><br>done
+                                    <td>
+                                        <p>default: <code>function() {}</code></p>
+                                        <p>Callback que recebe um argumento com os dados do CEP.<br>
+                                        Esta função é executada sempre que o campo CEP for preenchido.</p>
+                                <tr>
+                                    <th> <code>boolean</code><br>autofill
+                                    <td>
+                                        <p>default: <code>true</code></p>
+                                        <p>Quando o campo CEP é preenchido, além de chamar o seu callback
+                                        existe esta opção para que os demais campos do formulário se preencham
+                                        automaticamente.</p>
+                                        <p>Para que o preenchimento seja feito corretamente, você deve pôr um
+                                        determinado argumento nos campos que você quer que sejam preenchidos
+                                        automaticamente, o argumento é definido com a opção <code>autofill_attr</code>.</p>
+                                        <p><b>Exemplo:</b></p>
+                                        <p><code>&lt;input type="text" data-cep="rua"&gt;</code> - Será preenchido com o campo "rua"</p>
+                                <tr>
+                                    <th> <code>string</code><br>autofill_attr
+                                    <td>
+                                        <p>default: <code>"data-cep"</code></p>
+                                        <p>A opção de preencher dados automaticamente <span class="text-muted">(autofill)</span>
+                                        vai preencher apenas os inputs que tenham um determinado argumento, esta opção
+                                        define o nome deste argumento.</p>
+                                <tr>
+                                    <th> <code>boolean</code><br>cache
+                                    <td>
+                                        <p>default: <code>false</code></p>
+                                        <div class="text-muted">FALTA FAZER... FALTA PROGRAMAR...</div>
+                        </table>
+                        
+                        <h3>Exemplos de Uso</h3>
+                        <p>Você pode encontrar exemplos e mais detalhes na tab de documentação.</p>
+                        
+                    </div><!-- /.tab-pane -->
                 </div><!-- /.tab-content -->
             </main>
+            
+            <footer id="footer">
+                <div class="container">
+                    <div class="text-center text-muted" style="padding:30px;">
+                        Desenvolvido com <span style="color:#faa;">♥</span> por <a href="http://giovanneafonso.net" target="_blank">Giovanne Afonso</a>
+                        <br>
+                          <a href="https://github.com/giovanneafonso/jquery.cep" target="_blank">Ver no Github</a>
+                        | <a href="">Download</a>
+                    </div>
+                </div>
+            </footer>
         </article>
     </div>
 
@@ -223,6 +293,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('.cep').cep();
+    $('#input-demo-cep').focus();
 });
 </script>
 
