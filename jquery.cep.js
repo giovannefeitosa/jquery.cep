@@ -3,6 +3,10 @@
  * https://github.com/giovanneafonso/jquery.cep
  */
 
+// TODO: Verificar se é necessário mudar para JSONP
+//       por causa do cross domain do Internet Explorer
+//       Exemplo aqui: http://www.eliezer.com.br/post/busca-de-cep-no-seu-form-apenas-com-javascript/
+
 (function($) {
     /**
      * Web Service URL
