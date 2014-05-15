@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery CEP Plugin</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        padding-bottom:45px;
+    }
+    .container {
+        width: 700px;
+    }
+    #topheader {
+        padding:7px;
+        color:#666;
+        background: #f4f4f4;
+        font-size:13px;
+    }
+    #header {
+        margin-bottom:15px;
+        padding:15px;
+    }
+    #title {
+        display:block;
+        margin:0;
+        margin-bottom:15px;
+        color: #dc0055;
+        font-weight:bold;
+    }
+    #subtitle {
+        font-size:1.3em;
+    }
+    .tab-content {
+        padding: 15px;
+        border:1px solid #ddd;
+        border-top:0;
+    }
+    .doc-block {
+        margin-bottom: 30px;
+    }
+    .doc-block h3 {
+        margin:0;
+        margin-bottom:15px;
+        padding-bottom:5px;
+        border-bottom:1px solid #eee;
+    }
+    .doc-block p {
+        padding-left:15px;
+        color:#777;
+        font-size:16px;
+    }
+    .link-demonstracao {
+        float:right;
+        background:#666;
+        color:#fff;
+        padding:5px 15px;
+    }
+    .link-demonstracao:hover, .link-demonstracao:focus {
+        color:#fff;
+        background:#777;
+        text-decoration:none;
+    }
+    .demo-options-table {
+        margin-top:15px;
+    }
+    .demo-options-table thead th {
+        padding:30px !important;
+        background:#fff;
+        color:#69b;
+        font-size:18px;
+        text-align:center;
+    }
+    .demo-options-table tbody th {
+        text-align:right;
+    }
+    </style>
+</head>
+<body>
+    
+    <div id="topheader">
+        <div class="container">
+            <a href="https://github.com/giovanneafonso/jquery.cep" class="pull-right" target="_blank">
+                View on Github
+            </a>
+            Versão Atual: 0.2
+        </div>
+    </div>
+    
+    <div class="container">
+        <article>
+            <header id="header">
+                <h1 id="title">jQuery CEP Plugin</h1>
+                <span id="subtitle">Um plugin jQuery para pegar endereços de acordo com o CEP informado</span>
+            </header>
+            
+            <main>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#demo" data-toggle="tab">Demonstração</a></li>
+                    <li><a href="#demo-docs" data-toggle="tab">Documentação</a></li>
+                    <li><a href="#demo-options" data-toggle="tab">Opções do Plugin</a></li>
+                    <li class="pull-right">
+                        <a href="#demo-download" data-toggle="tab" style="background:#69b;color:#fff;margin-right:0;">
+                            <b>DOWNLOAD</b>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="tab-content">
+                    <div class="tab-pane active" id="demo">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="input-demo-cep">CEP</label>
+                                    <input type="text" id="input-demo-cep" class="cep form-control">
+                                </div>
+                                
+                                <div class="alert alert-info" style="font-size:13px;">
+                                    Digite um CEP acima para pesquisar os dados.
+                                    <br><br>
+                                    Os dados serão preenchidos automaticamente.
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="input-demo-cidade">Cidade</label>
+                                    <input type="text" id="input-demo-cidade" class="form-control" data-cep="cidade">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-demo-uf">Estado</label>
+                                    <input type="text" id="input-demo-uf" class="form-control" data-cep="uf">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-demo-tipo_logradouro">Tipo Logradouro</label>
+                                    <input type="text" id="input-demo-tipo_logradouro" class="form-control" data-cep="tipo_logradouro">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-demo-logradouro">Logradouro</label>
+                                    <input type="text" id="input-demo-logradouro" class="form-control" data-cep="logradouro">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-demo-bairro">Bairro</label>
+                                    <input type="text" id="input-demo-bairro" class="form-control" data-cep="bairro">
+                                </div>
+                                
+                            </div>
+                        </div><!-- /.row -->
+                    </div><!-- /#demo -->
+                
+                    <div class="tab-pane" id="demo-docs">
+                        <div class="doc-block">
+                            <h3>Como Funciona</h3>
+                            <p>
+                                jQuery CEP Plugin utiliza um
+                                <a href="http://www.republicavirtual.com.br/cep/index.php" target="_blank">webservice de CEP</a>
+                                para pegar dados do endereço de acordo com o CEP.
+                            </p>
+                        </div>
+                        
+                        <div class="doc-block">
+                            <h3>Utilização Básica</h3>
+                            <p>
+                                O jeito mais simples de utilizar o plugin é criar um formulário de endereço
+                                e, em cada campo, colocar os atributos requeridos.
+                            </p>
+                            
+                            <a href="http://embed.plnkr.co/ZpDV6LOBiWXKG9EghaRB/preview" target="_blank" class="link-demonstracao"><span class="glyphicon glyphicon-new-window"></span> Ver Demo</a>
+                            
+                            <ul class="nav nav-tabs">
+                                <li><a href="#demo1-html" data-toggle="tab">HTML</a></li>
+                                <li class="active"><a href="#demo1-js" data-toggle="tab">Javascript</a></li>
+                            </ul>
+                            
+                            <div class="tab-content">
+                                <div class="tab-pane" id="demo1-html">
+<pre>&lt;div&gt;
+  &lt;label for=&quot;input-cep&quot;&gt;Digite Seu CEP:&lt;/label&gt;
+  &lt;input type=&quot;text&quot; id=&quot;input-cep&quot;&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+
+&lt;div&gt;
+  &lt;label&gt;Logradouro&lt;/label&gt;
+  &lt;input type=&quot;text&quot; data-cep=&quot;logradouro&quot;&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;label&gt;Bairro&lt;/label&gt;
+  &lt;input type=&quot;text&quot; data-cep=&quot;bairro&quot;&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;label&gt;Cidade&lt;/label&gt;
+  &lt;input type=&quot;text&quot; data-cep=&quot;cidade&quot;&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;label&gt;Estado&lt;/label&gt;
+  &lt;input type=&quot;text&quot; data-cep=&quot;uf&quot;&gt;
+&lt;/div&gt;</pre>
+                                </div><!-- /.tab-pane (HTML) -->
+                                <div class="tab-pane active" id="demo1-js">
+<pre>$('#input-cep').cep();
+</pre>
+                                </div><!-- /.tab-pane (JS) -->
+                            </div><!-- /.tab-content -->
+                        </div><!-- /.doc-block -->
+                        
+                        <div class="doc-block">
+                            <h3>Callback</h3>
+                            <p>FALTA FAZER...</p>
+                        </div><!-- /.doc-block -->
+                        
+                        <div class="doc-block">
+                            <h3>Preenchimento Automático</h3>
+                            <p>FALTA FAZER...</p>
+                        </div><!-- /.doc-block -->
+                        
+                        <div class="doc-block">
+                            <h3>Cachê</h3>
+                            <p>FALTA FAZER...</p>
+                        </div><!-- /.doc-block -->
+                        
+                        
+                    </div><!-- /#demo-docs -->
+                    
+                    <div class="tab-pane" id="demo-options">
+                        Você pode personalizar o uso do plugin utilizando as opções disponíveis listadas abaixo.
+                        
+                        <table class="table table-striped table-bordered demo-options-table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Opções do Plugin</th>
+                            <tbody>
+                                <tr>
+                                    <th> <code>function</code><br>done
+                                    <td>
+                                        <p>default: <code>function() {}</code></p>
+                                        <p>Callback que recebe um argumento com os dados do CEP.<br>
+                                        Esta função é executada sempre que o campo CEP for preenchido.</p>
+                                <tr>
+                                    <th> <code>boolean</code><br>autofill
+                                    <td>
+                                        <p>default: <code>true</code></p>
+                                        <p>Quando o campo CEP é preenchido, além de chamar o seu callback
+                                        existe esta opção para que os demais campos do formulário se preencham
+                                        automaticamente.</p>
+                                        <p>Para que o preenchimento seja feito corretamente, você deve pôr um
+                                        determinado argumento nos campos que você quer que sejam preenchidos
+                                        automaticamente, o argumento é definido com a opção <code>autofill_attr</code>.</p>
+                                        <p><b>Exemplo:</b></p>
+                                        <p><code>&lt;input type="text" data-cep="rua"&gt;</code> - Será preenchido com o campo "rua"</p>
+                                <tr>
+                                    <th> <code>string</code><br>autofill_attr
+                                    <td>
+                                        <p>default: <code>"data-cep"</code></p>
+                                        <p>A opção de preencher dados automaticamente <span class="text-muted">(autofill)</span>
+                                        vai preencher apenas os inputs que tenham um determinado argumento, esta opção
+                                        define o nome deste argumento.</p>
+                                <tr>
+                                    <th> <code>boolean</code><br>cache
+                                    <td>
+                                        <p>default: <code>false</code></p>
+                                        <div class="text-muted">FALTA FAZER... FALTA PROGRAMAR...</div>
+                        </table>
+                        
+                        <h3>Exemplos de Uso</h3>
+                        <p>Você pode encontrar exemplos e mais detalhes na tab de documentação.</p>
+                        
+                    </div><!-- /.tab-pane -->
+                    
+                    <div class="tab-pane" id="demo-download">
+                        <div class="text-center" style="padding:40px;">
+                            <h3>
+                                Apenas o necessário
+                                <br>
+                                <small>
+                                    Clique com o botão direito &rt; Salvar Como.
+                                </small>
+                            </h3>
+                            <hr>
+                            
+                            <a href="https://raw.githubusercontent.com/giovanneafonso/jquery.cep/master/jquery.cep.min.js" class="btn btn-primary btn-lg">
+                                <span class="glyphicon glyphicon-download"></span> Link Direto
+                            </a>
+                            
+                            
+                            <br><hr><br>
+                            
+                            <h3>
+                                Repositório
+                                <br>
+                                <small>
+                                    Repositório completo com o plugin + demo + readme
+                                </small>
+                            </h3>
+                            <hr>
+                            
+                            <a href="https://github.com/giovanneafonso/jquery.cep/archive/master.zip" class="btn btn-primary btn-lg">
+                                <span class="glyphicon glyphicon-download"></span> Download .zip
+                            </a>
+                            
+                            <a href="https://github.com/giovanneafonso/jquery.cep/archive/master.tar.gz" class="btn btn-default btn-lg">
+                                <span class="glyphicon glyphicon-download"></span> Download .tar.gz
+                            </a>
+                        </div>
+                    </div><!-- /.tab-pane -->
+                </div><!-- /.tab-content -->
+            </main>
+            
+            <footer id="footer">
+                <div class="container">
+                    <div class="text-center text-muted" style="padding:30px;">
+                        Desenvolvido com <span style="color:#faa;">♥</span> por <a href="http://giovanneafonso.net" target="_blank">Giovanne Afonso</a>
+                        <br>
+                          <a href="https://github.com/giovanneafonso/jquery.cep" target="_blank">Ver no Github</a>
+                        | <a href="https://github.com/giovanneafonso/jquery.cep/archive/master.zip">Download</a>
+                    </div>
+                </div>
+            </footer>
+        </article>
+    </div>
+
+<!-- jQuery & Bootstrap -->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<!-- jQuery CEP Plugin -->
+<script type="text/javascript" src="jquery.cep.js"></script>
+
+<!-- Init Plugin -->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.cep').cep();
+    $('#input-demo-cep').focus();
+});
+</script>
+
+<!-- Google Font -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</body>
+</html>
