@@ -211,7 +211,45 @@
                         
                         <div class="doc-block">
                             <h3>Callback</h3>
-                            <p>FALTA FAZER...</p>
+                            <p>
+                                O callback é uma função chamada toda vez que um CEP é preenchido.
+                                Esta função recebe um argumento, que são os dados do endereço.
+                            </p>
+                            
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#demo2-js1" data-toggle="tab">Método 1</a></li>
+                                <li><a href="#demo2-js2" data-toggle="tab">Método 2</a></li>
+                            </ul>
+                            
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="demo2-js1">
+<pre>$('#cep').cep(function(endereco) {
+    <span class="text-muted">// Veja no console do seu navegador
+    // toda vez que terminar de preencher um CEP</span>
+    console.log('O endereço encontrado foi: ', endereco);
+    
+    <span class="text-muted">// Seja criativo, você pode salvar no banco de dados
+    // ou preencher outros campos
+    // ou qualquer outra coisa que queira fazer</span>
+});
+</pre>
+                                </div><!-- /.tab-pane (JS1) -->
+                                <div class="tab-pane" id="demo2-js2">
+<pre>$('#cep').cep({
+    <span class="text-muted">// "done" é o nome da opção do seu callback
+    // Funciona da mesma forma que o método 1
+    // mas aqui você pode adicionar outras opções também</span>
+    done: function(endereco) {
+        console.log('O endereço encontrado foi: ', endereco);
+    },
+    
+    <span class="text-muted">// Outras opções, caso você queira</span>
+    autofill: false,
+    cache: false
+});
+</pre>
+                                </div><!-- /.tab-pane (JS2) -->
+                            </div><!-- /.tab-content -->
                         </div><!-- /.doc-block -->
                         
                         <div class="doc-block">
