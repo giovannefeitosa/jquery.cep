@@ -12,7 +12,7 @@
      * Web Service URL
      * Where we get CEP data
      */
-    var ws_url = 'http://cep.republicavirtual.com.br/web_cep.php?formato=json&cep=';
+    var ws_url = 'http://cep.republicavirtual.com.br/web_cep.php?formato=jsonp&cep=';
     
     /**
      * PLugin instance
@@ -111,7 +111,7 @@
             var field = self.attr(attr);
             
             if(responseCEP[field]) {
-                self.val(responseCEP[field]);
+                self.val(responseCEP[field]).trigger("change");
             }
         });
     }
