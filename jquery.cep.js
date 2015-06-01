@@ -111,7 +111,7 @@
             var field = self.attr(attr);
             
             if(responseCEP[field]) {
-                self.val(responseCEP[field]);
+                self.val(responseCEP[field]).trigger("change");
             }
         });
     }
