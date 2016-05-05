@@ -76,6 +76,10 @@
     .demo-options-table tbody th {
         text-align:right;
     }
+    .demo-endereco-field-description {
+        font-size:13px;
+        margin-left:15px;
+    }
     </style>
 </head>
 <body>
@@ -219,6 +223,7 @@
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#demo2-js1" data-toggle="tab">Método 1</a></li>
                                 <li><a href="#demo2-js2" data-toggle="tab">Método 2</a></li>
+                                <li><a href="#demo2-endereco" data-toggle="tab">Exemplo de Resposta</a></li>
                             </ul>
                             
                             <div class="tab-content">
@@ -249,6 +254,36 @@
 });
 </pre>
                                 </div><!-- /.tab-pane (JS2) -->
+                                <div class="tab-pane" id="demo2-endereco">
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-10 col-sm-offset-1">
+                                            function(<code>endereco</code>) {
+                                            <ul style="margin-bottom:0;">
+                                                <li> <code>endereco.tipo_logradouro</code>
+                                                    <div class="demo-endereco-field-description">
+                                                        Qual é o tipo de logradouro?
+                                                        
+                                                        <div class="text-muted">
+                                                            (Ex.: rua, avenida, beco, travessa, etc.)
+                                                        </div>
+                                                    </div>
+                                                <li> <code>endereco.logradouro</code>
+                                                    <div class="demo-endereco-field-description">
+                                                        Nome da rua/avenida/beco/travessa/etc.
+                                                        
+                                                        <div class="text-muted">
+                                                            (Ex.: Joaquim Nabuco, 7 de setembro, Orlando Cruz, etc.)
+                                                        </div>
+                                                    </div>
+                                                <li> <code>endereco.bairro</code>
+                                                <li> <code>endereco.cidade</code> 
+                                                <li> <code>endereco.uf</code>
+                                            </ul>
+                                            }
+                                        </div><!-- /.col-sm-10 -->
+                                    </div><!-- /.row -->
+                                </div><!-- /.tab-pane (ENDERECO) -->
                             </div><!-- /.tab-content -->
                         </div><!-- /.doc-block -->
                         
@@ -367,7 +402,7 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 <!-- jQuery CEP Plugin -->
-<script type="text/javascript" src="jquery.cep.js"></script>
+<script type="text/javascript" src="jquery.cep.min.js"></script>
 
 <!-- Init Plugin -->
 <script type="text/javascript">
