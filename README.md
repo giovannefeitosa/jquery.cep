@@ -1,7 +1,7 @@
 #jQuery CEP Plugin
 Um plugin jQuery para pegar endereços de acordo com o CEP informado.
 
-## [VER DEMO](http://giovanneafonso.github.io/jquery.cep/)
+## [VER DEMO](http://shakegioh.github.io/jquery.cep/)
 
 **Este plugin ainda está em desenvolvimento. Você pode contribuir, se quiser.**
 
