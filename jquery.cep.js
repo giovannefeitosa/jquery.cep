@@ -78,17 +78,34 @@
 
         this.each(function () {
             var cepElement = $(this);
+            var lastCep = null;
+            
             // Track any changes
-            cepElement.on("keyup", function () {
+            cepElement.on("keyup", function (event) {
                 // var cep = Only CEP Numbers
-                var cepNumber = cepNumbers(cepElement.val());
-
-                // Update field value with formatted CEP
-                cepElement.val(maskedCEP(cepNumber));
+                var theKeyCode = event.keyCode || event.which;
+                var cepInputValue = cepElement.val();
+                var cepNumber = cepNumbers(cepInputValue);
+                var maskedCepNumber = maskedCEP(cepInputValue);
+                
+                // If the key is an arrow, doesn't continue
+                if(theKeyCode >= 37 && theKeyCode <= 40) {
+                    return;
+                }
+                
+                if(cepInputValue.length > 8 || !lastCep || lastCep != maskedCepNumber) {
+                    lastCep = maskedCepNumber;
+                    // Update field value with formatted CEP
+                    cepElement.val(maskedCepNumber);
+                } else {
+                    return;
+                }
+                
 
                 // When CEP is fully typed
                 // Send request and retrieve data
                 if (cepNumber.length === 8) {
+                    
                     cepElement.attr("disabled", true);
 
                     settings.init(cepElement);
