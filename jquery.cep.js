@@ -48,6 +48,21 @@
             }
         });
     }
+    
+    /**
+     * Default parser for the webservice response
+     */
+    function defaultResponseParse(response) {
+        response.endereco = "";
+        
+        if(response.tipo_logradouro) {
+            response.endereco += response.tipo_logradouro + " ";
+        }
+        
+        response.endereco += response.logradouro;
+        
+        return response;
+    }
 
     /**
      * PLugin instance
@@ -62,7 +77,7 @@
             ajax: {
                 url: "http://cep.republicavirtual.com.br/web_cep.php",
                 requestParse: function (request) { return request; },
-                responseParse: function (response) { return response; }
+                responseParse: defaultResponseParse
             },
             init: function (cepElement) { },
             done: function (cepElement, responseCEP) { }
@@ -117,7 +132,7 @@
 
                     $.get(settings.ajax.url, data, function (responseCEP) {
 
-                        //parseResponse for the rigth format
+                        //parseResponse for the right format
                         var response = settings.ajax.responseParse(responseCEP);
 
                         // Autofill
@@ -146,7 +161,7 @@
                 ajax: {
                     url: self.attr("cep-ajax-url") != null ? self.attr("cep-ajax-url") : "http://cep.republicavirtual.com.br/web_cep.php",
                     requestParse: self.attr("cep-ajax-requestParse") != null ? function (request) { return window[self.attr("cep-ajax-requestParse")](request); } : function (request) { return request; },
-                    responseParse: self.attr("cep-ajax-responseParse") != null ? function (response) { return window[self.attr("cep-ajax-responseParse")](response); } : function (response) { return response; }
+                    responseParse: self.attr("cep-ajax-responseParse") != null ? function (response) { return window[self.attr("cep-ajax-responseParse")](response); } : defaultResponseParse
                 },
                 init: self.attr("cep-init") != null ? function (cepElement) { window[self.attr("cep-init")](cepElement); } : function (cepElement) { },
                 done: self.attr("cep-done") != null ? function (cepElement, responseCEP) { window[self.attr("cep-done")](cepElement, responseCEP); } : function (cepElement, responseCEP) { }
