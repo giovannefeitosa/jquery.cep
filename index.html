@@ -157,12 +157,18 @@
                                     <input type="text" id="input-demo-uf" class="form-control" data-cep="uf">
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-demo-tipo_logradouro">Tipo Logradouro</label>
+                                    <label for="input-demo-tipo_logradouro">Tipo do Logradouro</label>
                                     <input type="text" id="input-demo-tipo_logradouro" class="form-control" data-cep="tipo_logradouro">
                                 </div>
                                 <div class="form-group">
                                     <label for="input-demo-logradouro">Logradouro</label>
                                     <input type="text" id="input-demo-logradouro" class="form-control" data-cep="logradouro">
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-demo-endereco">
+                                        Endereço <span class="text-muted">(Tipo do Logradouro + Logradouro)</span>
+                                    </label>
+                                    <input type="text" id="input-demo-endereco" class="form-control" data-cep="endereco">
                                 </div>
                                 <div class="form-group">
                                     <label for="input-demo-bairro">Bairro</label>
@@ -207,8 +213,8 @@
 &lt;hr&gt;
 
 &lt;div&gt;
-  &lt;label&gt;Logradouro&lt;/label&gt;
-  &lt;input type=&quot;text&quot; data-cep=&quot;logradouro&quot;&gt;
+  &lt;label&gt;Endereço&lt;/label&gt;
+  &lt;input type=&quot;text&quot; data-cep=&quot;endereco&quot;&gt;
 &lt;/div&gt;
 
 &lt;div&gt;
@@ -296,6 +302,14 @@
                                                             (Ex.: Joaquim Nabuco, 7 de setembro, Orlando Cruz, etc.)
                                                         </div>
                                                     </div>
+                                                <li> <code>endereco.endereco</code>
+                                                    <div class="demo-endereco-field-description">
+                                                        Tipo de logradouro + logradouro
+                                                        
+                                                        <div class="text-muted">
+                                                            (Ex.: Rua Shake, Avenida Joaquim Nabuco, Travessa Orlando Cruz, etc.)
+                                                        </div>
+                                                    </div>
                                                 <li> <code>endereco.bairro</code>
                                                 <li> <code>endereco.cidade</code> 
                                                 <li> <code>endereco.uf</code>
@@ -340,6 +354,11 @@
                                 <div class="auto-fill-field-doc">
                                     <span>&lt;input type="text" ... <strong>data-cep="logradouro"</strong>&gt;</span>
                                     Vai ser preenchido automaticamente com o logradouro do CEP informado (o nome da rua, ou da avenida, etc...)
+                                </div>
+                                
+                                <div class="auto-fill-field-doc">
+                                    <span>&lt;input type="text" ... <strong>data-cep="endereco"</strong>&gt;</span>
+                                    Vai ser preenchido automaticamente com o tipo de logradouro + logradouro do CEP informado (Rua Shake, Avenida Brasil, etc...)
                                 </div>
                                 
                                 <div class="auto-fill-field-doc">
