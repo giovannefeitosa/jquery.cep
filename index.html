@@ -80,6 +80,26 @@
         font-size:13px;
         margin-left:15px;
     }
+    
+    .auto-fill-doc {
+        display: block;
+        border-left: 3px solid #f0f0ff;
+        border-right: 3px solid #f0f0ff;
+    }
+    .auto-fill-field-doc {
+        display: block;
+        padding: 15px;
+        padding-left: 30px;
+        margin-bottom: 5px;
+    }
+    .auto-fill-field-doc span {
+        display: block;
+        background:#f0f0ff;
+        padding:5px;
+        border-radius:4px;
+        margin-left: -15px;
+        margin-bottom:5px;
+    }
     </style>
 </head>
 <body>
@@ -289,7 +309,46 @@
                         
                         <div class="doc-block">
                             <h3>Preenchimento Automático</h3>
-                            <p>FALTA FAZER...</p>
+                            <p>
+                                Após usar o jQuery CEP Plugin em um campo de texto, você pode
+                                configurar o preenchimento automático de outros campos simplesmente
+                                com alguns atributos data.
+                            </p>
+                            
+                            <p>
+                                Sempre que o campo CEP é preenchido, automaticamente os campos com atributos
+                                são preenchidos, e você não precisa se preocupar em atribuir os valores manualmente
+                                para cada campo do endereço.
+                            </p>
+                            
+                            <div class="auto-fill-doc">
+                                <div class="auto-fill-field-doc">
+                                    <span>&lt;input type="text" ... <strong>data-cep="cidade"</strong>&gt;</span>
+                                    Vai ser preenchido automaticamente com a cidade do CEP informado
+                                </div>
+                                
+                                <div class="auto-fill-field-doc">
+                                    <span>&lt;input type="text" ... <strong>data-cep="uf"</strong>&gt;</span>
+                                    Vai ser preenchido automaticamente com o estado (UF) do CEP informado
+                                </div>
+                                
+                                <div class="auto-fill-field-doc">
+                                    <span>&lt;input type="text" ... <strong>data-cep="tipo_logradouro"</strong>&gt;</span>
+                                    Vai ser preenchido automaticamente com o tipo de logradouro do CEP informado (rua, avenida, travessa, beco, etc...)
+                                </div>
+                                
+                                <div class="auto-fill-field-doc">
+                                    <span>&lt;input type="text" ... <strong>data-cep="logradouro"</strong>&gt;</span>
+                                    Vai ser preenchido automaticamente com o logradouro do CEP informado (o nome da rua, ou da avenida, etc...)
+                                </div>
+                                
+                                <div class="auto-fill-field-doc">
+                                    <span>&lt;input type="text" ... <strong>data-cep="bairro"</strong>&gt;</span>
+                                    Vai ser preenchido automaticamente com o bairro do CEP informado
+                                </div>
+                                
+                            </div>
+                            
                         </div><!-- /.doc-block -->
                         
                         <div class="doc-block">
@@ -351,7 +410,7 @@
                                 Apenas o necessário
                                 <br>
                                 <small>
-                                    Clique com o botão direito &rt; Salvar Como.
+                                    Clique com o botão direito &gt; Salvar Como.
                                 </small>
                             </h3>
                             <hr>
