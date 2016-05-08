@@ -1,6 +1,6 @@
 /**
  * jQuery CEP plugin v0.2
- * https://github.com/giovanneafonso/jquery.cep
+ * https://github.com/shakegioh/jquery.cep
  */
 
 // TODO: Verificar se é necessário mudar para JSONP
