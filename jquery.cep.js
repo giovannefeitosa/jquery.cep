@@ -1,5 +1,5 @@
 /**
- * jQuery CEP plugin v0.2
+ * jQuery CEP plugin v0.3
  * https://github.com/shakegioh/jquery.cep
  */
 
