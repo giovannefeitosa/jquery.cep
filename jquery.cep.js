@@ -44,8 +44,12 @@
             var field = self.attr(attr);
 
             if (responseCEP[field]) {
-                self.val(responseCEP[field]).trigger("change");
+                self.val(responseCEP[field]);
+            } else {
+                self.val("");
             }
+            
+            self.trigger("change");
         });
     }
     
