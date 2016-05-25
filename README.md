@@ -1,7 +1,10 @@
-# jQuery CEP Plugin
+## jQuery CEP Plugin
+
+[![StyleCI](https://styleci.io/repos/19625002/shield)](https://styleci.io/repos/19625002)
+
 Um plugin jQuery para pesquisar endereços por AJAX de acordo com o CEP informado.
 
-## [VER DEMO](http://shakegioh.github.io/jquery.cep/)
+### [VER DEMO](http://shakegioh.github.io/jquery.cep/)
 
 Ao preencher um CEP, os dados são preenchidos automaticamente nos outros campos de endereço que tiverem o atributo `data-cep="..."`.
 
